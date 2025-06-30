@@ -1,7 +1,8 @@
-SQL 4 day Sprint!!
+## SQL 4 day Sprint!!
 
 Practicing SQL fundamentals with a focus on data analysis and real-world joins.
 
+## 📅 Day Plan
 Day 1: SQL Basics
 •	SELECT, WHERE, AND/OR, ORDER BY, LIMIT
 
