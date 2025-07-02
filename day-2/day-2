@@ -1,0 +1,60 @@
+JOINs — Like Matching People from Two Lists
+  
+Imagine two lists:
+
+List A (employees) – has names and department IDs
+List B (departments) – has department IDs and names
+
+You want to connect them and get the actual department name for each employee.
+
+👉 INNER JOIN
+  
+Only gives you people that exist in both lists (matching dept_id).
+
+SELECT emp.name, dept.name
+FROM emp
+JOIN dept ON emp.dept_id = dept.id;
+  
+🧠 Think: “Only give me employees who actually belong to a known department.”
+
+👉 LEFT JOIN
+  
+Returns all employees, even if their dept_id doesn’t match anything in departments.
+
+SELECT emp.name, dept.name
+FROM emp
+LEFT JOIN dept ON emp.dept_id = dept.id;
+  
+🧠 Think: “Give me every employee, and add their department name if we know it—otherwise, just put NULL.”
+
+🔁 GROUP BY — Like Grouping Boxes by Color and Counting What's Inside
+  
+Imagine:
+You’re running a shop and tracking sales. Each row = 1 sale.
+Now you want to group sales by employee and find totals.
+
+SELECT emp_id, SUM(sale_amount)
+FROM sales
+GROUP BY emp_id;
+
+🧠 Think: “Group all sales by employee, then add up each employee’s sales.”
+
+⚙️ Common Aggregation Functions
+  
+Function	   What it does	            Example
+  
+SUM()	       Adds values	            Total sales
+COUNT()	     Counts rows	            How many sales made
+AVG()	       Averages values	        Average salary
+MAX()	       Highest value	          Highest sale
+MIN()	       Lowest value	            Lowest salary
+
+  
+TL;DR – You’re Basically Saying:
+
+JOIN = "Get me more info from another table"
+GROUP BY = "Group by this thing and do math on each group"
+SUM/COUNT/etc = "Do quick math on that group"
+
+
+
