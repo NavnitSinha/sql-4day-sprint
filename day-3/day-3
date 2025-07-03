@@ -1,0 +1,46 @@
+SQL Sprint – Day 3: Complex SQL Queries
+  
+🎯 Topics:
+
+Subqueries (a query inside a query)
+Aliases (AS)
+Nested SELECTs
+Let’s break it down smooth:
+
+🧠 1. Alias (AS) — rename things for clarity
+
+SELECT name AS customer_name FROM customers;
+Renames name column to customer_name in the result.
+
+You can also alias tables:
+
+SELECT c.name, o.amount
+FROM customers AS c
+JOIN orders AS o ON c.id = o.customer_id;
+
+🧠 2. Subquery — a query inside a query
+  
+Imagine you want to get customers who made the highest order:
+
+SELECT name FROM customers
+WHERE id = (
+  SELECT customer_id
+  FROM orders
+  ORDER BY amount DESC
+  LIMIT 1
+);
+
+What it does:
+First, the subquery:
+SELECT customer_id FROM orders ORDER BY amount DESC LIMIT 1
+→ Finds the ID of the customer with the biggest order
+Then, the outer query finds that customer’s name
+
+🧠 3. IN with Subquery — for multiple values
+
+SELECT name FROM customers
+WHERE id IN (
+  SELECT customer_id FROM orders WHERE amount > 300
+);
+→ This grabs customers who made any order over 300
+
